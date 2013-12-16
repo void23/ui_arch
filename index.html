@@ -79,14 +79,18 @@
 				</section>					
 
 				<section>
-					<h2>How Does Macys.com Compare?</h2>
-					<img src="img/planned.jpg" class="stretch" />
-				</section>	
+					<p>Where we are now ...</p>
+					<img src="img/slums.jpg" class="stretch" />
+				</section>		
 
 				<section>
-					<h2>How Does Macys.com Compare?</h2>
-					<img src="img/slums.jpg" class="stretch" />
-				</section>				
+					<p>Where we want to go in 2014 ...</p>
+					<img src="img/planned.jpg" class="stretch" />
+				</section>			
+
+				<section>
+					<h1>Getting There ...</h1>
+				</section>	
 
 				<section>
 					<h2>Going Forward</h2>
@@ -129,7 +133,8 @@
 				</section>	
 
 				<section>
-					<h2>Components<br />===<br /> Module Pattern!</h2>
+					<p>We build our components using the ...</p>
+					<h2>Module Pattern</h2>
 				</section>	
 
 				<section>
@@ -156,7 +161,7 @@
 				</section>
 
 				<section>
-					<h2>The Init</h2>
+					<p>On page load, we initialize the <strong>Component</strong> ...</p>
 					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">define([
     'components/thumb',
     'components/data'
@@ -184,47 +189,7 @@
 				</section>
 
 				<section>
-					<h2>The Component</h2>
-					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">define([
-        'jquery',
-        'underscore',
-        'backbone',
-        'helpers',
-        '../../templates/compiled/thumb.handlebars',
-],function($,_,Backbone,helpers,templates){
-
-        // define a view that renders once it is initialized
-        var ThumbView = Backbone.View.extend({
-                initialize: function() {
-                        var self = this;
-                        self.render();
-                },
-                render: function() {
-                        var self = this;
-                        self.$el.append(templates.thumb(self.collection.toJSON()))
-                        return self;
-                },
-                events: {
-                        'click img':'onClick'
-                },
-                onClick: function(e){
-                        alert('Surprise! You clicked on "'+$(e.target).attr('alt')+'"!');
-                }
-        })
-
-        // define a collection
-        var ThumbCollection = Backbone.Collection.extend();
-
-        // return the exposed API of this module
-        return {
-                view: ThumbView,
-                collection: ThumbCollection
-        }
-})</code></pre>
-				</section>
-
-				<section>
-					<h2>The Data</h2>
+					<p>The Data the <strong>Component</strong> consumes is JSON ...</p>
 					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">define([],function(){
         var thumbs = 
         [{
@@ -280,7 +245,47 @@
 				</section>
 
 				<section>
-					<h2>The View</h2>
+					<p>The <strong>Component</strong> itself exposes a simple API ...</p>
+					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">define([
+        'jquery',
+        'underscore',
+        'backbone',
+        'helpers',
+        '../../templates/compiled/thumb.handlebars',
+],function($,_,Backbone,helpers,templates){
+
+        // define a view that renders once it is initialized
+        var ThumbView = Backbone.View.extend({
+                initialize: function() {
+                        var self = this;
+                        self.render();
+                },
+                render: function() {
+                        var self = this;
+                        self.$el.append(templates.thumb(self.collection.toJSON()))
+                        return self;
+                },
+                events: {
+                        'click img':'onClick'
+                },
+                onClick: function(e){
+                        alert('Surprise! You clicked on "'+$(e.target).attr('alt')+'"!');
+                }
+        })
+
+        // define a collection
+        var ThumbCollection = Backbone.Collection.extend();
+
+        // return the exposed API of this module
+        return {
+                view: ThumbView,
+                collection: ThumbCollection
+        }
+})</code></pre>
+				</section>
+
+				<section>
+					<p><strong>Handlebars</strong> binds the JSON data to the HTML-based View markup ... </p>
 					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
 <div class="thumb">
     <img src="{{src}}" alt="{{name}}">
@@ -308,7 +313,7 @@
 				</section>
 
 				<section>
-					<h4>We protect our components using the ...</h4>
+					<p>We protect our <strong>Components</strong> using the ...</p>
 					<h2>Facade Pattern</h2>
 				</section>
 
@@ -327,7 +332,7 @@
 				</section>
 
 				<section>
-					<h4>We integrate our components using the ...</h4>
+					<p>We integrate our <strong>Components</strong> using the ...</p>
 					<h2>Mediator Pattern </h2>
 				</section>				
 
@@ -340,17 +345,18 @@
 				</section>
 
 				<section>
-					<h2>Page Architecture</h2>
+					<p>Our Common <strong>Page Architecture</strong>!</p>
 					<img src="img/pattern.png" class="stretch" />
 				</section>				
 
 				<section>
 					<h2>Reviewing the Approach</h2>
 					<ul>
-						<li><strong>Backbone.js</strong> for building consistant interactions using a Model / View / Collection architecture</li>
-						<li>Building re-usable components and managing dependencies with <strong>AMD + Require.js</strong></li>
-						<li>Using <strong>Foundation</strong> to provide consistent and robust framework for styling our views</li>
-						<li>Conforming to common <strong>Module / Facade / Mediator</strong> patterns to create rich and highly interactive Single Page Experiences</li>
+						<li class="fragment">A consistant developmental contract between the application layer and the UI using <strong>JSON</strong>
+						<li class="fragment"><strong>Backbone.js</strong> for enabling consistant interaction development using a Model / View / Collection architecture</li>
+						<li class="fragment">Building re-usable components and managing dependencies with <strong>AMD + Require.js</strong></li>
+						<li class="fragment">Using <strong>Handlerbars</strong> and <strong>Foundation</strong> to provide a common and robust framework for creating and styling our views</li>
+						<li class="fragment">Conforming to common <strong>Module / Facade / Mediator</strong> patterns to create rich and highly interactive Single Page Experiences</li>
 					</ul>
 				</section>
 
@@ -364,22 +370,22 @@
 				</section>
 
 				<section>
-					<h2>From Components ...</h2>
+					<p>We take individual <strong>Components</strong> ...</p>
 					<img src="img/component.png" class="stretch" />
 				</section>
 
 				<section>
-					<h2>To a Collection ...</h2>
+					<p>Build a <strong>Collection</strong> ...</p>
 					<img src="img/collection.png" class="stretch" />
 				</section>
 
 				<section>
-					<h2>To a Page ...</h2>
+					<p>Add those objects to a <strong>Page</strong> ...</p>
 					<img src="img/page_1.png" class="stretch" />
 				</section>
 
 				<section>
-					<h2>To an SPE!</h2>
+					<p>And use a Page <strong>Mediator</strong> facilitate communications between <strong>Components</strong> to create a <strong>Single Page Experiences!</strong></p>
 					<img src="img/spe.png" class="stretch" />
 				</section>
 
